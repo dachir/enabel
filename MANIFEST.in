@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include enabel *.css
+recursive-include enabel *.csv
+recursive-include enabel *.html
+recursive-include enabel *.ico
+recursive-include enabel *.js
+recursive-include enabel *.json
+recursive-include enabel *.md
+recursive-include enabel *.png
+recursive-include enabel *.py
+recursive-include enabel *.svg
+recursive-include enabel *.txt
+recursive-exclude enabel *.pyc
