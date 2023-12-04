@@ -34,7 +34,9 @@ def get_data(filters):
 
 	data = frappe.db.sql(
         """
-        SELECT t.branch, COUNT(DISTINCT t.name) AS nb, SUM(t.base) *  %(exchange_rate)s AS base_inss, SUM(t.base * 0.95) *  %(exchange_rate)s AS base_ipr, SUM(t.base) *  %(exchange_rate)s AS base_INPP, 
+        SELECT v.*, v.inssqpo + v.inssqpp AS total_inss, v.ipr AS total_ipr, %(currency)s AS currency, v.inssqpo + v.inssqpp + v.ipr + v.onem + v.inpp as total
+        FROM(
+            SELECT t.branch, COUNT(DISTINCT t.name) AS nb, SUM(t.base) *  %(exchange_rate)s AS base_inss, SUM(t.base * 0.95) *  %(exchange_rate)s AS base_ipr, SUM(t.base) *  %(exchange_rate)s AS base_INPP, 
             SUM(t.ipr) *  %(exchange_rate)s AS ipr, SUM(t.inssqpo) *  %(exchange_rate)s AS inssqpo, SUM(t.inssqpp) *  %(exchange_rate)s AS inssqpp, SUM(onem) *  %(exchange_rate)s AS onem, SUM(inpp) *  %(exchange_rate)s AS inpp
             FROM
                 (SELECT s.pay_period, s.name, e.branch, e.projet, p.project_name,s.currency,
