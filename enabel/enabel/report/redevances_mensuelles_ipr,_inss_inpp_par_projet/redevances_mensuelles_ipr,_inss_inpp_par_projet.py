@@ -32,8 +32,6 @@ def get_columns(filters):
 
 def get_data(filters):
 
-	#frappe.msgprint(str(filters))
-
 	data = frappe.db.sql(
         """
         SELECT v.*, v.inssqpo + v.inssqpp AS total_inss, v.ipr AS total_ipr, %(currency)s AS currency,

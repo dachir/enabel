@@ -9,7 +9,6 @@ frappe.query_reports["Redevances mensuelles IPR, INSS INPP par Projet"] = {
 			label: __("Période"),
 			fieldtype: "Link",
 			options: "Payroll Period",
-			//default: frappe.datetime.month_start(),
 			reqd: 1
 		},
 		{
@@ -17,7 +16,6 @@ frappe.query_reports["Redevances mensuelles IPR, INSS INPP par Projet"] = {
 			label: __("Devise"),
 			fieldtype: "Link",
 			options: "Currency",
-			//default: frappe.datetime.month_end(),
 			reqd: 1,
 			on_change: function(query_report) {
 				const devise_from = frappe.defaults.get_default("currency");
