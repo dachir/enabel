@@ -13,7 +13,7 @@ def execute(filters=None):
 
 def get_columns(filters):
 	columns = [
-		{ "label": _("Code Projet Débiteur"), "fieldtype": "Link",	"fieldname": "projet", "options": "Projet", "width": 100, },
+		{ "label": _("Code Projet Débiteur"), "fieldtype": "Link",	"fieldname": "projet", "options": "Project", "width": 100, },
 		{ "label": _("Acronyme ou nom du projet"), "fieldtype": "Data", "fieldname": "project_name", "width": 100, },
 		{ "label": _("Effectif DOP"), "fieldtype": "int", "fieldname": "effectif", "width": 100, },
 		{ "label": _("Effectif Data"), "fieldtype": "int", "fieldname": "nb", "width": 100, },
@@ -29,7 +29,7 @@ def get_columns(filters):
 	]
 	return columns
 
-
+#get the data
 def get_data(filters):
 
 	data = frappe.db.sql(
