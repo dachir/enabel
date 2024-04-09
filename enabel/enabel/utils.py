@@ -1,6 +1,7 @@
 import frappe
 from frappe import _
 
+@frappe.whitelist()
 def get_salary_monthly_rate(pay_period):
 	taux_de_change = frappe.db.sql(
 			"""
