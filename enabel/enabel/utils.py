@@ -2,7 +2,7 @@ import frappe
 from frappe import _
 
 def get_salary_monthly_rate(pay_period):
-    taux_de_change = frappe.db.sql(
+	taux_de_change = frappe.db.sql(
 			"""
 			SELECT MAX(taux_de_change) AS taux_de_change
 			FROM `tabPayroll Entry`
