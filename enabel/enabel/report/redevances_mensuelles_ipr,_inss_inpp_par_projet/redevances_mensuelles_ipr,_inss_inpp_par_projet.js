@@ -59,7 +59,7 @@ frappe.query_reports["Redevances mensuelles IPR, INSS INPP par Projet"] = {
 			label: __("Cours"),
 			fieldtype: "Data",
 			default: 1,
-			read_only: 1,
+			//read_only: 1,
 		},
 
 	]

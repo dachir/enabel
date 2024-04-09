@@ -2,6 +2,7 @@
 // For license information, please see license.txt
 /* eslint-disable */
 
+var pay_period;
 frappe.query_reports["Redevances mensuelles IPR, INSS INPP par Province"] = {
 	"filters": [
 		{
@@ -10,7 +11,10 @@ frappe.query_reports["Redevances mensuelles IPR, INSS INPP par Province"] = {
 			fieldtype: "Link",
 			options: "Payroll Period",
 			//default: frappe.datetime.month_start(),
-			reqd: 1
+			reqd: 1,
+			/*on_change: function(query_report) {
+				pay_period
+			}*/
 		},
 		{
 			fieldname:"currency",
@@ -20,23 +24,18 @@ frappe.query_reports["Redevances mensuelles IPR, INSS INPP par Province"] = {
 			//default: frappe.datetime.month_end(),
 			reqd: 1,
 			on_change: function(query_report) {
-				const devise_from = frappe.defaults.get_default("currency");
-				var devise_to = query_report.get_values().currency;
-				if (devise_from && devise_to) {
-					if (devise_to != devise_from) {
-						frappe.call({
-							method: "erpnext.setup.utils.get_exchange_rate",
-							args: {
-								from_currency: devise_from,
-								to_currency: devise_to,
-							},
-							callback: function (r) {
-								frappe.query_report.set_filter_value({exchange_rate: flt(r.message)});
-							}
-						});
-					} else {
-						frappe.query_report.set_filter_value({exchange_rate: 1.0});
-					}
+				//const devise_from = frappe.defaults.get_default("currency");
+				var pay_period = query_report.get_values().pay_period;
+				if (pay_period) {
+					frappe.call({
+						method: "enabel.enabel.utils.get_salary_monthly_rate",
+						args: {
+							pay_period: pay_period,
+						},
+						callback: function (r) {
+							frappe.query_report.set_filter_value({exchange_rate: flt(r.message)});
+						}
+					});
 				}
 				
 			}
