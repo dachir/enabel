@@ -47,7 +47,12 @@ def get_data(filters):
                     SUM(CASE WHEN d.parentfield = 'earnings' AND d.abbr = 'H130' THEN amount ELSE 0 END) + SUM(CASE WHEN d.parentfield = 'earnings' AND d.abbr = 'H160' THEN amount ELSE 0 END) +
                     SUM(CASE WHEN d.parentfield = 'earnings' AND d.abbr = 'H200' THEN amount ELSE 0 END) + SUM(CASE WHEN d.parentfield = 'earnings' AND d.abbr = 'CMJ' THEN amount ELSE 0 END) + 
                     SUM(CASE WHEN d.parentfield = 'earnings' AND d.abbr = 'CC' THEN amount ELSE 0 END) + SUM(CASE WHEN d.parentfield = 'earnings' AND d.abbr = 'CMT6' THEN amount ELSE 0 END) + 
-                    SUM(CASE WHEN d.parentfield = 'earnings' AND d.abbr = 'CMT8' THEN amount ELSE 0 END) AS base,
+                    SUM(CASE WHEN d.parentfield = 'earnings' AND d.abbr = 'CMT8' THEN amount ELSE 0 END) + SUM(CASE WHEN d.parentfield = 'earnings' AND d.abbr = 'Préavispresté' THEN amount ELSE 0 END) + 
+                    SUM(CASE WHEN d.parentfield = 'earnings' AND d.abbr = 'preavisnonpresté' THEN amount ELSE 0 END) + SUM(CASE WHEN d.parentfield = 'earnings' AND d.abbr = 'Créditencours' THEN amount ELSE 0 END) +
+                    SUM(CASE WHEN d.parentfield = 'earnings' AND d.abbr = 'Créditnonpris' THEN amount ELSE 0 END) + SUM(CASE WHEN d.parentfield = 'earnings' AND d.abbr = 'CPREAVIS' THEN amount ELSE 0 END) +
+                    SUM(CASE WHEN d.parentfield = 'earnings' AND d.abbr = 'PéculeCongéprorata' THEN amount ELSE 0 END) + SUM(CASE WHEN d.parentfield = 'earnings' AND d.abbr = 'Primefindannéeprorata' THEN amount ELSE 0 END) + 
+                    SUM(CASE WHEN d.parentfield = 'earnings' AND d.abbr = 'Primederentrescolaireprorata' THEN amount ELSE 0 END)
+                    AS base,
                     SUM(CASE WHEN d.parentfield = 'deductions' AND d.abbr = 'CNSS' THEN amount ELSE 0 END) AS inssqpo,
                     SUM(CASE WHEN d.parentfield = 'deductions' AND d.abbr = 'inssemp' THEN amount ELSE 0 END) AS inssqpp,
                     SUM(CASE WHEN d.parentfield = 'deductions' AND d.abbr = 'inppemp' THEN amount ELSE 0 END) AS inpp,
