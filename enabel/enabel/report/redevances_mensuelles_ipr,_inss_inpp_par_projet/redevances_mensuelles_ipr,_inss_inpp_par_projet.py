@@ -53,7 +53,7 @@ def get_data(filters):
                     SUM(CASE WHEN d.parentfield = 'earnings' AND d.abbr = 'preavisnonpresté' THEN amount ELSE 0 END) + SUM(CASE WHEN d.parentfield = 'earnings' AND d.abbr = 'Créditencours' THEN amount ELSE 0 END) +
                     SUM(CASE WHEN d.parentfield = 'earnings' AND d.abbr = 'Créditnonpris' THEN amount ELSE 0 END) + SUM(CASE WHEN d.parentfield = 'earnings' AND d.abbr = 'CPREAVIS' THEN amount ELSE 0 END) +
                     SUM(CASE WHEN d.parentfield = 'earnings' AND d.abbr = 'PéculeCongéprorata' THEN amount ELSE 0 END) + SUM(CASE WHEN d.parentfield = 'earnings' AND d.abbr = 'Primefindannéeprorata' THEN amount ELSE 0 END) + 
-                    SUM(CASE WHEN d.parentfield = 'earnings' AND d.abbr = 'Primederentrescolaireprorata' THEN amount ELSE 0 END)
+                    SUM(CASE WHEN d.parentfield = 'earnings' AND d.abbr = 'Primederentrescolaireprorata' THEN amount ELSE 0 END) + SUM(CASE WHEN d.parentfield = 'earnings' AND d.abbr = 'P' THEN amount ELSE 0 END)
 					AS base,
 					SUM(CASE WHEN d.parentfield = 'deductions' AND d.abbr = 'CNSS' THEN amount ELSE 0 END) AS inssqpo,
 					SUM(CASE WHEN d.parentfield = 'deductions' AND d.abbr = 'inssemp' THEN amount ELSE 0 END) AS inssqpp,
